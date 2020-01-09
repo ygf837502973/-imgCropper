@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>image popCroper demo</title>
+
+<link rel="stylesheet" href="https://layui.hcwl520.com.cn/layui-v2.3.0/css/layui.css?v=201805080202">
+<link rel="stylesheet" type="text/css" href="cropper/cropper.min.css">
+<link rel="stylesheet" type="text/css" href="css/pop.css">
+</head>
+<body style="text-align:center;padding-top:50px">
+<button type="button" id="popImage">选择图片</button>
+</body>
+<script src="https://layui.hcwl520.com.cn/layui-v2.3.0/layui.js?v=201805080202"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>
+<script src="cropper/cropper.min.js"></script>
+<script src="img_cropper.js"></script>
+
+<script type="text/javascript">
+	new PopCroper("#popImage").init({
+			aspectRatio : 4 / 3,// 裁剪框宽高比例，默认比例1/1  
+			title: "上传图片",//弹出框标题
+			//btn:["yes","cancel"],//弹出框按钮，默认为['确认', '取消']
+			maxmin:false,//是否支持弹出框最大最小化，默认true
+			imgType: 'jpg,png,jpeg',//允许上传的图片类型,默认'jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF'
+			//area: ["500px", "800px"],// 弹出框的大小[宽，高],默认900
+			//showPreview: false, //是否显示预览区域，默认true
+			maxSize : 1, //最大允许上传的图片大小(单位M)，默认5M
+			uploadURL: "http://locahost/demo/image/upload", //上传到服务端的地址
+			before: function (data){ //提交上传之前触发，参数为图片裁剪后的值 {x:'',y:'',height:'',width:''} x,y表示坐上角的其实坐标，height,width表示裁剪后的大小。这里可以改变data的数值
+				console.log(data);
+				//data.x = 123;
+			},
+			success: function (data) { //上传成功
+				//TODO
+			}
+		});
+</script>
+</html>
+
+
+
